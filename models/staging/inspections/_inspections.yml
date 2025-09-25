@@ -1,0 +1,5 @@
+
+models:
+  - name: chicago_inspections_stg
+  - name: nyc_inspections_stg
+  - name: sf_inspections_stg

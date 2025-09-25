@@ -1,0 +1,11 @@
+sources:
+  - name: raw
+    schema: raw_data
+    tables:
+      - name: chicago_food_establishments
+      - name: chicago_inspections
+      - name: nyc_food_establishments
+      - name: nyc_inspections
+      - name: sf_food_establishments
+      - name: sf_inspections
+

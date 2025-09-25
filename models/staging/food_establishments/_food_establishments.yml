@@ -1,0 +1,5 @@
+
+models:
+  - name: chicago_food_establishments_stg
+  - name: nyc_food_establishments_stg
+  - name: sf_food_establishments_stg

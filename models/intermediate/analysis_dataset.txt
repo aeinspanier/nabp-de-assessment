@@ -1,0 +1,25 @@
+with sf_food_establishments as (
+    select *
+    from {{ ref('sf_food_establishments_stg') }}
+),
+sf_inspections as (
+    select *
+    from {{ ref('sf_inspections_stg') }}
+),
+nyc_food_establishments as (
+    select *
+    from {{ ref('nyc_food_establishments_stg') }}
+),
+nyc_inspections as (
+    select *
+    from {{ ref('nyc_inspections_stg') }}
+),
+chicago_food_establishments as (
+    select *
+    from {{ ref('chicago_food_establishments_stg') }}
+),
+chicago_inspections as (
+    select *
+    from {{ ref('chicago_inspections_stg') }}
+)
+

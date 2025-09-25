@@ -1,0 +1,8 @@
+de_assessment:
+  outputs:
+    dev:
+      type: duckdb
+      path: "./data/inspection_database.db"
+      threads: 2
+  target: dev
+
