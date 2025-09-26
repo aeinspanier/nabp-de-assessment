@@ -1,4 +1,9 @@
-{{ config(materialized='table') }}
+
+{{ config(
+            materialized='table',
+            unique_key=['business_id'],
+            tags=['establishments', 'staging', 'bronze', 'nyc']
+) }}
 
 with source as (
     select 

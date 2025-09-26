@@ -1,4 +1,8 @@
-{{ config(materialized='table') }}
+{{ config(
+            materialized='table',
+            unique_key=['city_tag', 'inspection_id'],
+            tags=['intermediate', 'gold', 'chicago', 'nyc', 'sf']
+) }}
 
 with chicago_establishment_inspections as (
   select
