@@ -23,7 +23,7 @@ transform as (
       business_id,
       business_name,
       business_address,
-      ingestion_time
+      ingestion_time as last_updated_at
     from standardize
 ),
 final as (
@@ -31,7 +31,7 @@ final as (
       business_id,
       business_name,
       business_address,
-      ingestion_time
+      last_updated_at
     from transform
 )
 
