@@ -11,7 +11,7 @@ with source as (
     from {{ source('raw', 'sf_food_establishments') }}
 ),
 standardize as (
-    select
+    select distinct
       CAST(permit_id AS VARCHAR) as business_id,
       dba as business_name,
       street_address as business_address,
@@ -19,10 +19,11 @@ standardize as (
     from source
 ),
 transform as (
-    select distinct
+    select
       business_id,
       business_name,
       business_address,
+      ROW_NUMBER() OVER (PARTITION BY business_id ORDER BY ingestion_time DESC) as ingestion_order,
       ingestion_time as last_updated_at
     from standardize
 ),
@@ -33,6 +34,7 @@ final as (
       business_address,
       last_updated_at
     from transform
+    where ingestion_order = 1
 )
 
 select * from final

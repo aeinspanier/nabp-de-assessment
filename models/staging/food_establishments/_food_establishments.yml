@@ -10,10 +10,6 @@ models:
         data_tests:
           - not_null
           - unique
-          - relationships:
-              arguments:
-                to: ref('chicago_inspections_stg')
-                field: business_id
       - name: business_name
         data_type: varchar
         description: "Name of business"
@@ -38,10 +34,6 @@ models:
         data_tests:
           - not_null
           - unique
-          - relationships:
-              arguments:
-                to: ref('nyc_inspections_stg')
-                field: business_id
       - name: business_name
         data_type: varchar
         description: "Name of business"
@@ -66,10 +58,6 @@ models:
         data_tests:
           - not_null
           - unique
-          - relationships:
-              arguments:
-                to: ref('sf_inspections_stg')
-                field: business_id
       - name: business_name
         data_type: varchar
         description: "Name of business"

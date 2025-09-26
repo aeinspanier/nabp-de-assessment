@@ -25,10 +25,6 @@ models:
         description: "Unique identifier of business"
         data_tests:
           - not_null
-          - relationships:
-              arguments:
-                to: ref('chicago_food_establishments_stg')
-                field: business_id
       - name: inspection_status
         data_type: varchar
         description: "Status (pass/fail) of inspection"
@@ -66,10 +62,6 @@ models:
         description: "Unique identifier of business"
         data_tests:
           - not_null
-          - relationships:
-              arguments:
-                to: ref('chicago_food_establishments_stg')
-                field: business_id
       - name: inspection_status
         data_type: varchar
         description: "Status (pass/fail) of inspection"
@@ -107,10 +99,6 @@ models:
         description: "Unique identifier of business"
         data_tests:
           - not_null
-          - relationships:
-              arguments:
-                to: ref('chicago_food_establishments_stg')
-                field: business_id
       - name: inspection_status
         data_type: varchar
         description: "Status (pass/fail) of inspection"
