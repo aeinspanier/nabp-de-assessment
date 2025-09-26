@@ -1,5 +1,75 @@
+version: 2
 
 models:
   - name: chicago_food_establishments_stg
+    description: "Chicago Food Establishments Staging Table"
+    columns:
+      - name: business_id
+        data_type: varchar
+        description: "Unique id for business"
+        data_tests:
+          - not_null
+          - unique
+      - name: business_name
+        data_type: varchar
+        description: "Name of business"
+        data_tests:
+          - not_null
+      - name: business_address
+        data_type: varchar
+        description: "Address of business"
+        data_tests:
+          - not_null
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Last time the record was updated"
+        data_tests:
+          - not_null
   - name: nyc_food_establishments_stg
+    description: "NYC Food Establishments Staging Table"
+    columns:
+      - name: business_id
+        data_type: varchar
+        description: "Unique id for business"
+        data_tests:
+          - not_null
+          - unique
+      - name: business_name
+        data_type: varchar
+        description: "Name of business"
+        data_tests:
+          - not_null
+      - name: business_address
+        data_type: varchar
+        description: "Address of business"
+        data_tests:
+          - not_null
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Last time the record was updated"
+        data_tests:
+          - not_null
   - name: sf_food_establishments_stg
+    description: "SF Food Establishments Staging Table"
+    columns:
+      - name: business_id
+        data_type: varchar
+        description: "Unique id for business"
+        data_tests:
+          - not_null
+          - unique
+      - name: business_name
+        data_type: varchar
+        description: "Name of business"
+        data_tests:
+          - not_null
+      - name: business_address
+        data_type: varchar
+        description: "Address of business"
+        data_tests:
+          - not_null
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Last time the record was updated"
+        data_tests:
+          - not_null

@@ -1,5 +1,114 @@
+version: 2
 
 models:
   - name: chicago_inspections_stg
+    description: "Chicago Inspections Staging Table"
+    columns:
+      - name: inspection_id
+        data_type: varchar
+        description: "Unique id for inspection"
+        data_tests:
+          - not_null
+          - unique
+      - name: inspection_date
+        data_type: date 
+        description: "Date of inspection"
+        data_tests:
+          - not_null
+      - name: inspection_type
+        data_type: varchar
+        description: "Type of inspection performed"
+        data_tests:
+          - not_null
+      - name: business_id
+        data_type: varchar
+        description: "Unique identifier of business"
+        data_tests:
+          - not_null
+      - name: inspection_status
+        data_type: varchar
+        description: "Status (pass/fail) of inspection"
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['PASS', 'FAIL', 'UNKNOWN']
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Time record last updated"
+        data_tests:
+          - not_null
   - name: nyc_inspections_stg
+    description: "NYC Inspections Staging Table"
+    columns:
+      - name: inspection_id
+        data_type: varchar
+        description: "Unique id for inspection"
+        data_tests:
+          - not_null
+          - unique
+      - name: inspection_date
+        data_type: date 
+        description: "Date of inspection"
+        data_tests:
+          - not_null
+      - name: inspection_type
+        data_type: varchar
+        description: "Type of inspection performed"
+        data_tests:
+          - not_null
+      - name: business_id
+        data_type: varchar
+        description: "Unique identifier of business"
+        data_tests:
+          - not_null
+      - name: inspection_status
+        data_type: varchar
+        description: "Status (pass/fail) of inspection"
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['PASS', 'FAIL', 'UNKNOWN']
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Time record last updated"
+        data_tests:
+          - not_null
   - name: sf_inspections_stg
+    description: "SF Inspections Staging Table"
+    columns:
+      - name: inspection_id
+        data_type: varchar
+        description: "Unique id for inspection"
+        data_tests:
+          - not_null
+          - unique
+      - name: inspection_date
+        data_type: date 
+        description: "Date of inspection"
+        data_tests:
+          - not_null
+      - name: inspection_type
+        data_type: varchar
+        description: "Type of inspection performed"
+        data_tests:
+          - not_null
+      - name: business_id
+        data_type: varchar
+        description: "Unique identifier of business"
+        data_tests:
+          - not_null
+      - name: inspection_status
+        data_type: varchar
+        description: "Status (pass/fail) of inspection"
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['PASS', 'FAIL', 'UNKNOWN']
+      - name: last_updated_at
+        data_type: timestamp
+        description: "Time record last updated"
+        data_tests:
+          - not_null

@@ -14,17 +14,20 @@ with source as (
     from {{ source('raw', 'sf_inspections') }}
 ),
 standardize as (
-    select
-      CONCAT(CAST(inspection_date AS VARCHAR), '::', inspection_type, '::', permit_id) as inspection_id,
+    select distinct
+      CAST(inspection_date AS VARCHAR) as inspection_date,
       inspection_date,
       inspection_type,
+      SPLIT_PART(permit_type, ' - ', 1) as permit_code,
       permit_id as business_id,
       LOWER(facility_rating_status) as facility_rating_status,
       ingestion_time
     from source
+    where violation_count is not null
 ),
 transform as (
-    select
+    select distinct
+      CONCAT(CAST(inspection_date AS VARCHAR), '::', inspection_type, '::', business_id, '::', permit_code) as inspection_id,
       inspection_id,
       inspection_date,
       inspection_type,
@@ -36,6 +39,8 @@ transform as (
       END AS inspection_status,
       ingestion_time as last_updated_at
     from standardize
+    where permit_code is not null
+  
 ),
 final as (
     select

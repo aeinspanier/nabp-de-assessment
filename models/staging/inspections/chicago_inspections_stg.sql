@@ -20,6 +20,7 @@ standardize as (
       results,
       ingestion_time      
     from source
+    where results IS NOT NULL
 ),
 transform as (
     select

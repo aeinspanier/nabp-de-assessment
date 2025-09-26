@@ -13,7 +13,7 @@ with source as (
     from {{ source('raw', 'nyc_food_establishments') }}
 ),
 standardize as (
-    select
+    select distinct
       CAST(establishment_id AS VARCHAR) as business_id,
       dba as business_name,
       boro,
@@ -28,6 +28,7 @@ transform as (
       business_id,
       business_name,
       CONCAT(street, ' , Bldg ', building, ' ', boro, ' , New York City,  ', zipcode) as business_address,
+      ROW_NUMBER() OVER (PARTITION BY business_id ORDER BY ingestion_time DESC) as ingestion_order,
       ingestion_time
     from standardize
 ),
@@ -36,8 +37,10 @@ final as (
       business_id,
       business_name,
       business_address,
+      ROW_NUMBER() OVER (PARTITION BY business_id ORDER BY ingestion_time DESC) as ingestion_order,
       ingestion_time as last_updated_at
     from transform
+    where ingestion_order=1
 )
 
 select * from final
