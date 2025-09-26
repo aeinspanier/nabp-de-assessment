@@ -34,7 +34,7 @@ transform as (
         WHEN facility_rating_status LIKE '%closure%' THEN 'FAIL'
         ELSE 'UNKNOWN'
       END AS inspection_status,
-      ingestion_time
+      ingestion_time as last_updated_at
     from standardize
 ),
 final as (
@@ -44,7 +44,7 @@ final as (
       inspection_type,
       business_id,
       inspection_status,
-      ingestion_time as last_updated_at
+      last_updated_at
     from transform
 )
 
