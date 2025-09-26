@@ -13,7 +13,7 @@ with source as (
     from {{ source('raw', 'nyc_food_establishments') }}
 ),
 standardize as (
-    select
+    select distinct
       CAST(establishment_id AS VARCHAR) as business_id,
       dba as business_name,
       boro,

@@ -19,7 +19,7 @@ standardize as (
     from source
 ),
 transform as (
-    select
+    select distinct
       business_id,
       business_name,
       business_address,
