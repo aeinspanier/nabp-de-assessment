@@ -6,9 +6,17 @@ from typing import Optional
 import duckdb
 import pandas as pd
 
+
+class QueryError(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+        self.message = message
+
+
+
 class DuckDBOperator:
     def __init__(self, project_root_dir: Path, db_name: str = "database.db"):
-        self.project_root_dir = project_root_dir
+        self.project_root_dir = Path(project_root_dir)
         self.db_name = db_name
         self.set_db_path()
         self.logger = logging.getLogger(self.__class__.__name__)
@@ -21,6 +29,7 @@ class DuckDBOperator:
         """Context manager for handling database connections."""
         conn = None
         try:
+            print(f"setting connection with db_path: {self.db_path}")
             conn = duckdb.connect(self.db_path)
             yield conn
         finally:
@@ -28,9 +37,10 @@ class DuckDBOperator:
                 conn.close()
 
     def _execute_query(
-        self, sql: str, conn: duckdb.duckdb.DuckDBPyConnection
+        self, sql: str, conn: duckdb.DuckDBPyConnection
     ) -> pd.DataFrame:
         try:
+            print(f"running query: {sql}")
             result = conn.execute(sql)
             return result.df()
         except Exception as e:
@@ -38,7 +48,7 @@ class DuckDBOperator:
             raise QueryError(f"Query execution failed: {str(e)}")
 
     def query(
-        self, sql: str, conn: Optional[duckdb.duckdb.DuckDBPyConnection] = None
+        self, sql: str, conn: Optional[duckdb.DuckDBPyConnection] = None
     ) -> pd.DataFrame:
         if conn:
             return self._execute_query(sql, conn)
