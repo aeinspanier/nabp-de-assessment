@@ -15,6 +15,7 @@ models:
         description: "Unique ID for inspection"
         data_tests:
           - not_null
+          - unique  
       - name: business_name
         data_type: varchar
         description: "Name of Business"
@@ -69,6 +70,7 @@ models:
         description: "Unique ID for inspection"
         data_tests:
           - not_null
+          - unique  
       - name: business_name
         data_type: varchar
         description: "Name of Business"
@@ -123,6 +125,7 @@ models:
         description: "Unique ID for inspection"
         data_tests:
           - not_null
+          - unique  
       - name: business_name
         data_type: varchar
         description: "Name of Business"
