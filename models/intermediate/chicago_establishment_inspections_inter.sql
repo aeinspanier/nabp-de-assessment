@@ -1,4 +1,8 @@
-{{ config(materialized='table') }}
+{{ config(
+            materialized='table',
+            unique_key=['inspection_id'],
+            tags=['intermediate', 'silver', 'chicago']
+) }}
 
 
 with inspections as (
