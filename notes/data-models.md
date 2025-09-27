@@ -45,4 +45,15 @@ As a final presentation to business stakeholders, each establishment inspection 
 
 Each record is tagged with the appropriate city for easy filtering.
 
+## Reporting Layer
 
+### Inspection Metrics Calculated
+Inspection metrics are calculated along a few different axes for the business stakeholder's analysis.
+
+Total inspections along with percentage of passes are calculated along each of the following dimensions:
+
+* City
+* Business
+* Date
+
+This reporting layer may be used to develop risk assessment models based on inspection results.
