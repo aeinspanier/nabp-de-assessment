@@ -22,3 +22,5 @@ models:
       +schema: staging
     intermediate:
       +schema: intermediate
+    reporting:
+      +schema: reporting
